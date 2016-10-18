@@ -13,11 +13,20 @@ namespace RedditOverflow
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // This route allows us to get rid of the Index tag
+            // so it behaves just like reddit
+            routes.MapRoute(
+                "Subreddit search",
+                "Subreddit/{id}",
+                new { controller = "Subreddit", action = "Index" }
+            );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Subreddit", action = "Index", id = UrlParameter.Optional }
             );
+
         }
     }
 }
