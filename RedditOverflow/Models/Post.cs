@@ -11,6 +11,8 @@ namespace RedditOverflow.Models
         public string Content { get; set; }
         // Author
         public string Author { get; set; }
+        // Subreddit
+        public string Subreddit { get; set; }
         // Date of publication
         public DateTime Date { get; set; }
         // Url of the Reddit post

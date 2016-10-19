@@ -29,7 +29,7 @@ namespace RedditOverflow.Models
             // If there is no name, we get the posts from /r/all
             Name = name ?? "all";
             // Call to the API
-            GetInfosFromSubreddit(name);
+            GetInfosFromSubreddit(Name);
         }
 
         // Call to the Reddit API
@@ -52,7 +52,24 @@ namespace RedditOverflow.Models
                 {
                     // Getting the JSON from Reddit
                     var dataObjects = response.Content.ReadAsStringAsync().Result;
-                    // TODO get data
+                    var obj = JObject.Parse(dataObjects);
+                    ListPosts = new List<Post>();
+                    for (int i = 0; i < 25; i++) // Retrieve 25 first posts
+                    {
+                        Post post = new Post();
+                        post.Author = (string)obj["data"]["children"][i]["data"]["author"];
+                        post.Content = (string)obj["data"]["children"][i]["data"]["selftext"];
+                        DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+                        dtDateTime = dtDateTime.AddSeconds((int)obj["data"]["children"][i]["data"]["created_utc"]).ToLocalTime();
+                        post.Date = dtDateTime;
+                        post.Link = (string)obj["data"]["children"][i]["data"]["url"];
+                        post.Score = (int)obj["data"]["children"][i]["data"]["score"];
+                        post.Subreddit = (string)obj["data"]["children"][i]["data"]["subreddit"];
+                        post.Title = (string)obj["data"]["children"][i]["data"]["title"];
+                        post.Url = (string)obj["data"]["children"][i]["data"]["permalink"];
+
+                        ListPosts.Add(post);
+                    }
                 }
                 else
                 {
