@@ -21,6 +21,8 @@ namespace RedditOverflow.Models
         public string Link { get; set; }
         // Karma
         public int Score { get; set; }
+        //Thumbnail
+        public string Thumbnail { get; set; }
         // Can't access the comments while we're not on the specific post
         // We know the number of comments
         public List<Comment> ListComments { get; set; }

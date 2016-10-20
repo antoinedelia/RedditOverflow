@@ -65,6 +65,12 @@ namespace RedditOverflow.Models
                         post.Link = (string)obj["data"]["children"][i]["data"]["url"];
                         post.Score = (int)obj["data"]["children"][i]["data"]["score"];
                         post.Subreddit = (string)obj["data"]["children"][i]["data"]["subreddit"];
+                        post.Thumbnail = (string)obj["data"]["children"][i]["data"]["thumbnail"];
+                        if(post.Thumbnail == "self" || 
+                            post.Thumbnail == "image" || 
+                            post.Thumbnail == "" ||
+                            post.Thumbnail == "default") post.Thumbnail = "http://cdn.sstatic.net/Sites/stackoverflow/company/img/logos/so/so-icon.png?v=c78bd457575a";
+                        if (post.Thumbnail == "nsfw") post.Thumbnail = "http://images-cdn.9gag.com/images/thumbnail-facebook/1449833411.1455_tajAVE_n.jpg";
                         post.Title = (string)obj["data"]["children"][i]["data"]["title"];
                         post.Url = (string)obj["data"]["children"][i]["data"]["permalink"];
 

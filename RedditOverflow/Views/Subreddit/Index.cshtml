@@ -1,334 +1,11 @@
 ﻿@model RedditOverflow.Models.Subreddit
 
-@Html.DisplayFor(@model => @model.Name)
-
-<style>
-    #header {
-        margin: 0 auto;
-        width: 1060px;
-        height: 96px;
-        padding: 0 15px;
-        box-sizing: content-box;
-        position: relative;
-    }
-
-    .container {
-        margin: 0 auto;
-        text-align: left;
-        width: 100%;
-    }
-
-    .cbt {
-        clear: both;
-    }
-
-    #content {
-        min-height: 450px;
-        margin: 0 auto;
-        -webkit-box-sizing: content-box;
-        -moz-box-sizing: content-box;
-        box-sizing: content-box;
-        width: 1060px;
-        padding: 15px;
-        background-color: #FFF;
-    }
-
-    #mainbar, .mainbar {
-        float: left;
-        width: 728px;
-        margin: 0 0 0 0;
-        padding: 0;
-    }
-
-    #hlogo {
-        float: left;
-    }
-
-        #hlogo a {
-            top: 5px;
-            background-position: top left;
-            background-repeat: no-repeat;
-        }
-
-        #hlogo a {
-            position: relative;
-            display: block;
-            width: 200px;
-            height: 50px;
-            text-decoration: none;
-        }
-
-    a {
-        color: #07C;
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-
-    #hmenus {
-        top: 38px;
-    }
-
-    #hmenus {
-        position: absolute;
-        right: 15px;
-        top: 55px;
-    }
-
-        #hmenus .mainnavs, #hmenus .askquestion {
-            display: inline-block;
-        }
-
-    .nav ul {
-        margin: 0;
-    }
-
-    ul {
-        list-style-type: disc;
-    }
-
-    ul, ol {
-        margin-left: 30px;
-        margin-bottom: 1em;
-    }
-
-    ul, ol, li {
-        margin: 0;
-        padding: 0;
-    }
-
-    #hmenus .nav ul li {
-        display: inline-block;
-        margin: 0;
-        padding: 0;
-    }
-
-    .nav ul li {
-        display: inline-block;
-        margin-left: 15px;
-    }
-
-    ul, ol, li {
-        margin: 0;
-        padding: 0;
-    }
-
-    #hmenus .mainnavs, #hmenus .askquestion {
-        display: inline-block;
-    }
-
-    .question-summary {
-        padding: 12px 0 10px 0;
-        border-bottom: 1px solid #e4e6e8;
-    }
-
-    .question-summary {
-        overflow: hidden;
-        padding: 15px 0;
-        width: 728px;
-        border-bottom: 1px solid #eff0f1;
-    }
-
-    .statscontainer {
-        width: 78px;
-        float: left;
-        margin-right: 8px;
-        margin-left: 8px;
-    }
-
-    .statsarrow {
-        float: right;
-        height: 13px;
-        width: 7px;
-        margin-top: 12px;
-    }
-
-    .stats {
-        margin: 0 0 0 0;
-        width: 58px;
-    }
-
-    .vote {
-        text-align: center;
-    }
-
-    .statscontainer .status {
-        padding: 7px 0 5px 0;
-        font-size: 11px;
-    }
-
-    .status {
-        padding: 0;
-        margin-bottom: 8px;
-        text-align: center;
-    }
-
-    .statscontainer .views {
-        width: 58px;
-    }
-
-    .views {
-        padding-top: 4px;
-        text-align: center;
-    }
-
-
-    .summary {
-        float: left;
-        width: 630px;
-    }
-
-    #mainbar h2, .mainbar h2, #mainbar h3, .mainbar h3, #mainbar h4, .mainbar h4 {
-        font-weight: 400;
-    }
-
-    .summary h3 {
-        font-size: 15px;
-        line-height: 1.4;
-        margin-bottom: .5em;
-    }
-
-    h3 {
-        font-size: 15px;
-    }
-
-    .answer-hyperlink:visited, #hot-network-questions ul a:visited {
-        color: #005999;
-    }
-
-    .question-hyperlink, .answer-hyperlink {
-        color: #07C;
-        line-height: 1.3;
-        margin-bottom: 1.2em;
-    }
-
-    .question-hyperlink {
-        font-size: 16px;
-        font-weight: 400;
-    }
-
-    a {
-        color: #07C;
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-    .excerpt {
-        padding: 0;
-        padding-bottom: 5px;
-        margin: 0;
-        color: #3b4045;
-    }
-
-    .tags {
-        line-height: 18px;
-        float: left;
-    }
-
-    .fr {
-        float: right;
-    }
-
-    .started {
-        width: 200px;
-        float: right;
-        line-height: 18px;
-    }
-
-    .topbar {
-        width: 100%;
-        background: rgba(12,13,14,0.86);
-        height: 34px;
-        line-height: 1;
-    }
-
-    .topbar {
-        font-size: 13px;
-    }
-
-        .topbar .topbar-wrapper {
-            width: 1060px;
-            padding-left: 0;
-            position: relative;
-        }
-
-        .topbar .topbar-wrapper {
-            width: 980px;
-            margin: 0 auto;
-            height: 34px;
-            text-align: left;
-            position: relative;
-        }
-
-    .topbar-dialog.siteSwitcher-dialog {
-        width: 375px;
-        overflow-y: scroll;
-        overflow-x: hidden;
-        min-height: 390px;
-        max-height: 390px;
-    }
-
-    .hidden, .dno {
-        display: none;
-    }
-
-    .topbar-dialog {
-        font-family: Arial,"Helvetica Neue",Helvetica,sans-serif !important;
-        color: #2f3337;
-        font-size: 12px;
-        background-color: #FFF;
-        box-shadow: 0 2px 2px rgba(12,13,14,0.2);
-        z-index: 999;
-        position: absolute;
-        text-align: left;
-        border-left: 1px solid #e4e6e8;
-        border-right: 1px solid #e4e6e8;
-        border-bottom: 1px solid #e4e6e8;
-    }
-
-        .topbar-dialog .header {
-            background-color: #eff0f1;
-            width: 100%;
-            box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            padding: 7px 10px 4px 10px;
-            position: relative;
-            clear: both;
-        }
-
-    html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        font-size: 100%;
-    }
-
-    .topbar-dialog.siteSwitcher-dialog .current-site-container {
-        background-color: #f6fcff;
-        border-left: 3px solid #2f96e8;
-    }
-
-    .topbar-dialog.siteSwitcher-dialog .modal-content {
-        padding: 0;
-    }
-
-    .topbar-dialog .modal-content {
-        width: 100%;
-        -moz-box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-        padding: 10px 7px;
-        max-height: 300px;
-        margin: 1px 0 1px 0;
-        position: relative;
-    }
-</style>
 <div class="container">
     <div id="header">
         <br class="cbt">
         <div id="hlogo">
             <a href="/">
-                <img src="~/Content/img/stackoverflow.png" alt="stack_overflow" style="width:270px; height:90px;">
+                <img src="~/Content/img/stackoverflow.png" alt="stack_overflow" style="width:200px; height:40px; margin:20px;">
             </a>
 
         </div>
@@ -336,35 +13,35 @@
             <div class="nav mainnavs">
                 <ul>
                     <li class="youarehere">
-                        <a id="nav-questions" href="/questions" class="js-gps-track" data-gps-track="top_nav.click({is_current:true, location:3, destination:1})">
+                        <a id="nav-questions" href="#" class="js-gps-track" data-gps-track="top_nav.click({is_current:true, location:3, destination:1})">
                             Questions
                         </a>
                     </li>
 
                     <li>
-                        <a id="nav-jobs" href="/jobs?med=site-ui&amp;ref=jobs-tab" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:6})">
+                        <a id="nav-jobs" href="#" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:6})">
                             Jobs
                         </a>
                     </li>
                     <li>
-                        <a id="nav-docs" href="/documentation" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:7})">
+                        <a id="nav-docs" href="#" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:7})">
                             Documentation
                         </a>
                     </li>
                     <li>
-                        <a id="nav-tags" href="/tags" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:2})">
+                        <a id="nav-tags" href="#" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:2})">
                             Tags
                         </a>
                     </li>
 
                     <li>
-                        <a id="nav-users" href="/users" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:3})">
+                        <a id="nav-users" href="#" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:3})">
                             Users
                         </a>
                     </li>
 
                     <li>
-                        <a id="nav-badges" href="/help/badges" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:4})">
+                        <a id="nav-badges" href="#" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:4})">
                             Badges
                         </a>
                     </li>
@@ -374,7 +51,7 @@
             <div class="nav askquestion">
                 <ul>
                     <li>
-                        <a id="nav-askquestion" href="/questions/ask">Ask Question</a>
+                        <a id="nav-askquestion" href="#">Ask Question</a>
                     </li>
                 </ul>
             </div>
@@ -384,10 +61,34 @@
     <div id="content" class="snippet-hidden">
 
         <div id="mainbar">
+            <div class="subheader">
+                <h1 id="h-all-questions">All Questions</h1>
 
+                <div id="tabs">
+                    <a class="youarehere" href="#" data-nav-xhref="" title="The most recently asked questions" data-value="newest" data-shortcut="N">
+                        newest
+                    </a>
+                    <a href="#" data-nav-xhref="" title="Questions with open bounties" data-value="featured" data-shortcut="E">
+                        <span class="bounty-indicator-tab">382</span>            featured
+                    </a>
+                    <a href="#" data-nav-xhref="" title="Questions with the most links" data-value="frequent" data-shortcut="F">
+                        frequent
+                    </a>
+                    <a href="#" data-nav-xhref="" title="Questions with the most votes" data-value="votes" data-shortcut="V">
+                        votes
+                    </a>
+                    <a href="#" data-nav-xhref="" title="Questions that have recent activity" data-value="active" data-shortcut="A">
+                        active
+                    </a>
+                    <a id="tab-switch" href="#" data-nav-xhref="" title="Switch to unanswered tabs" data-value="" data-shortcut="">
+                        unanswered
+                    </a>
+                </div>
+
+            </div>
             @foreach (var post in Model.ListPosts)
             {
-                <div class="question-summary" id="question-summary-40139306">
+                <div class="question-summary @(@post.Score%4 == 0 ? "tagged-interesting" : "")">
                     <div class="statscontainer">
                         <div class="statsarrow"></div>
                         <div class="stats">
@@ -398,17 +99,17 @@
                                 </div>
                             </div>
                             <div class="status unanswered">
-                                <strong>0</strong>answers
+                                <strong>@Math.Round(post.Score / 50.0)</strong>answers
                             </div>
                         </div>
-                        <div class="views " title="2 views">
-                            2 views
+                        <div class="views">
+                            @Math.Round(post.Score / 20.0) views
                         </div>
                     </div>
                     <div class="summary">
-                        <h3><a href="" class="question-hyperlink">@post.Title</a></h3>
+                        <h3><a href="#" class="question-hyperlink">@post.Title</a></h3>
                         <div class="excerpt">
-                            @post.Content.Substring(0, post.Content.Length > 50 ? 50 : 0)
+                            @post.Content.Substring(0, post.Content.Length > 200 ? 200 : post.Content.Length)
                         </div>
                         <div class="tags">
                             <a href="/Subreddit/@post.Subreddit" class="post-tag" rel="tag">@post.Subreddit</a>
@@ -416,19 +117,353 @@
                         <div class="started fr">
                             <div class="user-info ">
                                 <div class="user-action-time">
-                                    asked <span title="2016-10-19 18:47:46Z" class="relativetime">@post.Date</span>
+                                    asked <span class="relativetime">@post.Date</span>
                                 </div>
                                 <div class="user-gravatar32">
-                                    <a href="/users/5565586/frank-fritz-the-blitz"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/b4ea9d3519d109cea0f4160845889de4?s=32&amp;d=identicon&amp;r=PG&amp;f=1" alt="" width="32" height="32"></div></a>
+                                    @*<a href="#"><div class="gravatar-wrapper-32"><img src="http://lorempixel.com/400/400/people/1" alt="" width="32" height="32"></div></a>*@
+                                    <a href="#"><div class="gravatar-wrapper-32"><img src="@(post.Thumbnail)" alt="" width="32" height="32"></div></a>
                                 </div>
                                 <div class="user-details">
-                                    <a href="/users/5565586/frank-fritz-the-blitz">@post.Author</a>
+                                    <a href="#">@post.Author</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             }
+        </div>
+
+        <div id="sidebar">
+            <div class="module" id="questions-count">
+                <div class="summarycount al">12,637,654</div>
+                <p>questions</p>
+            </div>
+
+            <div class="module community-bulletin" data-tracker="cb=1">
+                <div class="related">
+                    <div class="bulletin-title">
+                        Featured on Meta
+                    </div>
+                    <hr>
+                    <div class="spacer">
+                        <div class="bulletin-item-type">
+                            <a href="#" class="question-hyperlink">
+                                <div class="favicon favicon-so" title="Meta Stack Exchange"></div>
+                            </a>
+                        </div>
+                        <div class="bulletin-item-content">
+                            <a href="#" class="question-hyperlink">Let's Plan The Second Iteration Of The Stack Exchange Quality Project!</a>
+                        </div>
+                        <br class="cbt">
+                    </div>
+                    <div class="spacer">
+                        <div class="bulletin-item-type">
+                            <a href="#" class="question-hyperlink">
+                                <div class="favicon favicon-so" title="Meta Stack Overflow"></div>
+                            </a>
+                        </div>
+                        <div class="bulletin-item-content">
+                            <a href="#" class="question-hyperlink">Documentation Update, October 20th</a>
+                        </div>
+                        <br class="cbt">
+                    </div>
+                    <div class="bulletin-title">
+                        Hot Meta Posts
+                    </div>
+                    <hr>
+                    <div class="spacer">
+                        <div class="bulletin-item-type">
+                            <span title="Vote score (upvotes - downvotes)">11</span>
+                        </div>
+                        <div class="bulletin-item-content">
+                            <a href="#" class="question-hyperlink">Are there (guiding!) statistics about review “approval” rates?</a>
+                        </div>
+                        <br class="cbt">
+                    </div>
+                    <div class="spacer">
+                        <div class="bulletin-item-type">
+                            <span title="Vote score (upvotes - downvotes)">7</span>
+                        </div>
+                        <div class="bulletin-item-content">
+                            <a href="#" class="question-hyperlink">How to add a Microsoft Certification to Developer Story?</a>
+                        </div>
+                        <br class="cbt">
+                    </div>
+                    <div class="spacer">
+                        <div class="bulletin-item-type">
+                            <span title="Vote score (upvotes - downvotes)">28</span>
+                        </div>
+                        <div class="bulletin-item-content">
+                            <a href="#" class="question-hyperlink">Can we talk about the reviewing culture here on Meta?</a>
+                        </div>
+                        <br class="cbt">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="module" id="interesting-tags">
+
+                <h4 id="h-interesting-tags">Favorite Tags</h4>
+                <a id="edit-interesting">edit</a>
+                <div id="interestingTags"><a href="#" class="post-tag user-tag" title="show questions tagged 'java'" rel="tag">java</a> <a href="#" class="post-tag user-tag" title="show questions tagged 'android'" rel="tag"><img src="//i.stack.imgur.com/tKsDb.png" height="16" width="18" alt="" class="sponsor-tag-img">android</a> <a href="/questions/tagged/php" class="post-tag user-tag" title="show questions tagged 'php'" rel="tag">php</a> </div>
+                <span id="add-interesting"></span>
+                <a id="addInterestingTag" class="dno">Add a favorite tag</a><br>
+                <p id="tag-subscriptions" class="ar dno" style="margin-top: 10px;"><a href="#">advanced tag subscriptions »</a></p>
+                <div id="ignored-wrapper" class="dno">
+                    <h4 id="h-ignored-tags">Ignored Tags</h4>
+
+                    <div id="ignoredTags">
+                    </div>
+                    <span id="add-ignored"></span>
+                    <a id="addIgnoredTag">Add an ignored tag</a>
+                    <div class="dno">
+
+                        <div><input type="radio" name="hideIgnored" id="hideIgnoredTrue"><label for="hideIgnoredTrue">&nbsp;Hide questions in your ignored tags</label></div>
+                        <div><input type="radio" name="hideIgnored" id="hideIgnoredFalse" checked="checked"><label for="hideIgnoredFalse">&nbsp;Gray out questions in your ignored tags</label></div>
+                    </div>
+                </div>
+                <p id="tag-pref-prefs" class="ar dno" style="margin-top: 10px;"><a href="#">set tag preferences »</a></p>
+            </div>
+
+            <script>
+                StackExchange.ready(function () {
+                    StackExchange.tagPreferences.applyPrefs(true, []);
+                });
+            </script>
+            <script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22, 8277, "adzerk110102289", [5, 17, 2221]).setZone(45); });
+            </script>
+
+            <div id="hireme"></div>
+            <script>
+                ; (function (n) { var u = Object.assign || function (n) { for (var i, r, u, f, e = [], t = 1; t < arguments.length; t++) e[t - 1] = arguments[t]; for (i = 0, r = e; i < r.length; i++) { u = r[i]; for (f in u) n[f] = u[f] } return n }, r, t, f, i; try { if (typeof [].indexOf != "function") return; if (r = ["stackoverflow.com", "serverfault.com", "careers.stackoverflow.com", "blog.codinghorror.com", "joelonsoftware.com", "www.joelonsoftware.com", "talent.stackoverflow.com"], r[0] !== "*" && r.indexOf(location.hostname) === -1) return; t = window; f = t.clc_opts ? u({}, window.clc_opts) : {}; t.clc_opts = u(n, f); void 0; t.clc_opts.autoload && (t.clc_init = t.clc_init || [], t.clc_init.push(function () { return t.clc.load() })); i = document.createElement("script"); i.async = !0; void 0; i.src = t.clc_opts.lib; document.body.appendChild(i) } catch (e) { void 0 } }).call(null, { "azw": true, "kt": 2000, "tto": true, "autoload": true, "d": { "sb": ["hireme", "clc-sb"], "tlb": ["careers1", "clc-tlb"], "mlb": ["careers3", "clc-mlb"] }, "allowed": ["stackoverflow.com", "serverfault.com", "careers.stackoverflow.com", "blog.codinghorror.com", "joelonsoftware.com", "www.joelonsoftware.com", "talent.stackoverflow.com"], "h": "clc.stackoverflow.com", "u": "//clc.stackoverflow.com/p.js", "lib": "//cdn.sstatic.net/clc/clc.min.js?v=0b93ded9c111" });        </script>
+
+
+            <div class="module js-gps-related-tags" id="related-tags">
+
+                <h4 id="h-related-tags">Related Tags</h4>
+                <div>
+                    <a href="#" class="post-tag no-tag-menu js-gps-track" title="show questions tagged 'javascript'" rel="tag">javascript</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">1239725</span></span>
+                </div>
+                <div>
+                    <a href="#" class="post-tag no-tag-menu js-gps-track" title="show questions tagged 'java'" rel="tag">java</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">1153297</span></span>
+                </div>
+                <div>
+                    <a href="#" class="post-tag no-tag-menu js-gps-track" title="show questions tagged 'c#'" rel="tag">c#</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">1015600</span></span>
+                </div>
+                <div>
+                    <a href="#" class="post-tag no-tag-menu js-gps-track" title="show questions tagged 'php'" rel="tag">php</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">989711</span></span>
+                </div>
+                <div>
+                    <a href="#" class="post-tag no-tag-menu js-gps-track" title="show questions tagged 'android'" rel="tag"><img src="//i.stack.imgur.com/tKsDb.png" height="16" width="18" alt="" class="sponsor-tag-img">android</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">907775</span></span>
+                </div>
+                <div>
+                    <a href="#" class="post-tag no-tag-menu js-gps-track" title="show questions tagged 'jquery'" rel="tag">jquery</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">783292</span></span>
+                </div>
+                <div>
+                    <a href="#" class="post-tag no-tag-menu js-gps-track" title="show questions tagged 'python'" rel="tag">python</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">645341</span></span>
+                </div>
+                <div>
+                    <a href="#" class="post-tag no-tag-menu js-gps-track" title="show questions tagged 'html'" rel="tag">html</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">587372</span></span>
+                </div>
+                <div>
+                    <a href="#" class="post-tag no-tag-menu js-gps-track" title="show questions tagged 'c++'" rel="tag">c++</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">476462</span></span>
+                </div>
+                <div>
+                    <a href="#" class="post-tag no-tag-menu js-gps-track" title="show questions tagged 'ios'" rel="tag">ios</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">468645</span></span>
+                </div>
+                <div class="dno js-hidden">
+                    <a href="#" class="post-tag no-tag-menu js-gps-track" title="show questions tagged 'mysql'" rel="tag">mysql</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">426995</span></span>
+                </div>
+                <div class="dno js-hidden">
+                    <a href="#" class="post-tag no-tag-menu js-gps-track" title="show questions tagged 'css'" rel="tag">css</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">424585</span></span>
+                </div>
+                <div class="dno js-hidden">
+                    <a href="#" class="post-tag no-tag-menu js-gps-track" title="show questions tagged 'sql'" rel="tag">sql</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">363075</span></span>
+                </div>
+                <div class="dno js-hidden">
+                    <a href="#" class="post-tag no-tag-menu js-gps-track" title="show questions tagged 'asp.net'" rel="tag">asp.net</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">301319</span></span>
+                </div>
+                <div class="dno js-hidden">
+                    <a href="#" class="post-tag no-tag-menu js-gps-track" title="show questions tagged 'objective-c'" rel="tag">objective-c</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">267753</span></span>
+                </div>
+                <div class="dno js-hidden">
+                    <a href="#" class="post-tag no-tag-menu js-gps-track" title="show questions tagged 'ruby-on-rails'" rel="tag">ruby-on-rails</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">258136</span></span>
+                </div>
+                <div class="dno js-hidden">
+                    <a href="#" class="post-tag no-tag-menu js-gps-track" title="show questions tagged '.net'" rel="tag">.net</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">241445</span></span>
+                </div>
+                <div class="dno js-hidden">
+                    <a href="#" class="post-tag no-tag-menu js-gps-track" title="show questions tagged 'c'" rel="tag">c</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">230865</span></span>
+                </div>
+                <div class="dno js-hidden">
+                    <a href="#" class="post-tag no-tag-menu js-gps-track" title="show questions tagged 'iphone'" rel="tag">iphone</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">215177</span></span>
+                </div>
+                <div class="dno js-hidden">
+                    <a href="#" class="post-tag no-tag-menu js-gps-track" title="show questions tagged 'angularjs'" rel="tag">angularjs</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">203320</span></span>
+                </div>
+                <div class="dno js-hidden">
+                    <a href="#" class="post-tag no-tag-menu js-gps-track" title="show questions tagged 'arrays'" rel="tag">arrays</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">202552</span></span>
+                </div>
+                <div class="dno js-hidden">
+                    <a href="#" class="post-tag no-tag-menu js-gps-track" title="show questions tagged 'sql-server'" rel="tag">sql-server</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">180248</span></span>
+                </div>
+                <div class="dno js-hidden">
+                    <a href="#" class="post-tag no-tag-menu js-gps-track" title="show questions tagged 'json'" rel="tag">json</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">173846</span></span>
+                </div>
+                <div class="dno js-hidden">
+                    <a href="#" class="post-tag no-tag-menu js-gps-track" title="show questions tagged 'ruby'" rel="tag">ruby</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">170107</span></span>
+                </div>
+                <div class="dno js-hidden">
+                    <a href="#" class="post-tag no-tag-menu js-gps-track" title="show questions tagged 'r'" rel="tag">r</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">×</span>&nbsp;<span class="item-multiplier-count">156738</span></span>
+                </div>
+                <a href="#" class="show-more js-show-more js-gps-track" data-gps-track="related_tags.click({ item_type:2 })">
+                    more related tags
+                </a>
+                <script>
+                    StackExchange.ready(function () {
+                        var $div = $('#h-related-tags').parent();
+                        $div.find('.js-show-more').click(function () {
+                            $div.find('.js-hidden').show();
+                            $(this).remove();
+                            return false;
+                        });
+                    });
+                </script>
+
+            </div>
+
+            <div id="hot-network-questions" class="module">
+                <h4>
+                    <a href="#" class="js-gps-track" data-gps-track="posts_hot_network.click({ item_type:1, location:9 })">
+                        Hot Network Questions
+                    </a>
+                </h4>
+                <ul>
+                    <li>
+                        <div class="favicon favicon-so" title="Worldbuilding Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:579 }); posts_hot_network.click({ item_type:2, location:9 })">
+                            How to explain the existance of just one religion?
+                        </a>
+                    </li>
+                    <li>
+                        <div class="favicon favicon-so" title="Seasoned Advice"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:49 }); posts_hot_network.click({ item_type:2, location:9 })">
+                            UV lamp to disinfect raw sushi fish slices
+                        </a>
+                    </li>
+                    <li>
+                        <div class="favicon favicon-so" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:200 }); posts_hot_network.click({ item_type:2, location:9 })">
+                            Sieve of Eratosthenes, Step by Step
+                        </a>
+                    </li>
+                    <li>
+                        <div class="favicon favicon-so" title="Puzzling Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:559 }); posts_hot_network.click({ item_type:2, location:9 })">
+                            What's the longest concertina word you can find?
+                        </a>
+                    </li>
+                    <li>
+                        <div class="favicon favicon-so" title="Academia Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:415 }); posts_hot_network.click({ item_type:2, location:9 })">
+                            Name spelling on publications
+                        </a>
+                    </li>
+                    <li>
+                        <div class="favicon favicon-so" title="Academia Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:415 }); posts_hot_network.click({ item_type:2, location:9 })">
+                            What are the legal and ethical implications of "padding" pay with extra hours to compensate for unpaid work?
+                        </a>
+                    </li>
+                    <li>
+                        <div class="favicon favicon-so" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:200 }); posts_hot_network.click({ item_type:2, location:9 })">
+                            Compute the Eulerian number
+                        </a>
+                    </li>
+                    <li>
+                        <div class="favicon favicon-so" title="Skeptics Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:212 }); posts_hot_network.click({ item_type:2, location:9 })">
+                            Is the four minute nuclear weapon response time classified information?
+                        </a>
+                    </li>
+                    <li>
+                        <div class="favicon favicon-so" title="Electrical Engineering Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:135 }); posts_hot_network.click({ item_type:2, location:9 })">
+                            What's the difference between coax cable and regular electric wire?
+                        </a>
+                    </li>
+                    <li>
+                        <div class="favicon favicon-so" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:200 }); posts_hot_network.click({ item_type:2, location:9 })">
+                            Codegolf the permanent
+                        </a>
+                    </li>
+                    <li>
+                        <div class="favicon favicon-so" title="Puzzling Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:559 }); posts_hot_network.click({ item_type:2, location:9 })">
+                            Unique representation of combination without sorting
+                        </a>
+                    </li>
+                    <li>
+                        <div class="favicon favicon-so" title="Chemistry Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:431 }); posts_hot_network.click({ item_type:2, location:9 })">
+                            If you put two blocks of an element together, why don't they bond?
+                        </a>
+                    </li>
+                    <li class="dno js-hidden" style="display: list-item;">
+                        <div class="favicon favicon-so" title="Stack Overflow"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:1 }); posts_hot_network.click({ item_type:2, location:9 })">
+                            Why doesn't the compiler report a missing semicolon?
+                        </a>
+                    </li>
+                    <li class="dno js-hidden" style="display: list-item;">
+                        <div class="favicon favicon-so" title="Puzzling Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:559 }); posts_hot_network.click({ item_type:2, location:9 })">
+                            Hexagonal minesweeper
+                        </a>
+                    </li>
+                    <li class="dno js-hidden" style="display: list-item;">
+                        <div class="favicon favicon-so" title="Mathematics Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:69 }); posts_hot_network.click({ item_type:2, location:9 })">
+                            When to stop rolling a die in a game where 6 loses everything
+                        </a>
+                    </li>
+                    <li class="dno js-hidden" style="display: list-item;">
+                        <div class="favicon favicon-so" title="Travel Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:273 }); posts_hot_network.click({ item_type:2, location:9 })">
+                            What are the legal consequences for a tourist who runs out of gas on the Autobahn?
+                        </a>
+                    </li>
+                    <li class="dno js-hidden" style="display: list-item;">
+                        <div class="favicon favicon-so" title="Academia Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:415 }); posts_hot_network.click({ item_type:2, location:9 })">
+                            Publishing a mathematical research article on research which is already done?
+                        </a>
+                    </li>
+                    <li class="dno js-hidden" style="display: list-item;">
+                        <div class="favicon favicon-so" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:186 }); posts_hot_network.click({ item_type:2, location:9 })">
+                            Old science fiction film: father and son on space mission
+                        </a>
+                    </li>
+                    <li class="dno js-hidden" style="display: list-item;">
+                        <div class="favicon favicon-so" title="TeX - LaTeX Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:85 }); posts_hot_network.click({ item_type:2, location:9 })">
+                            Detecting harmful LaTeX code
+                        </a>
+                    </li>
+                    <li class="dno js-hidden" style="display: list-item;">
+                        <div class="favicon favicon-so" title="Monero Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:656 }); posts_hot_network.click({ item_type:2, location:9 })">
+                            What is actually happening when you pool mine? What is a share?
+                        </a>
+                    </li>
+                    <li class="dno js-hidden" style="display: list-item;">
+                        <div class="favicon favicon-so" title="Unix &amp; Linux Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:106 }); posts_hot_network.click({ item_type:2, location:9 })">
+                            Get complete last row of `df` output
+                        </a>
+                    </li>
+                    <li class="dno js-hidden" style="display: list-item;">
+                        <div class="favicon favicon-so" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:200 }); posts_hot_network.click({ item_type:2, location:9 })">
+                            Take a ride on the Reading, If you pass Go, collect $200
+                        </a>
+                    </li>
+                    <li class="dno js-hidden" style="display: list-item;">
+                        <div class="favicon favicon-so" title="Movies &amp; TV Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:367 }); posts_hot_network.click({ item_type:2, location:9 })">
+                            '90s kids movie about a game robot attacking people
+                        </a>
+                    </li>
+                    <li class="dno js-hidden" style="display: list-item;">
+                        <div class="favicon favicon-so" title="Programmers Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:131 }); posts_hot_network.click({ item_type:2, location:9 })">
+                            How to find positive things in a code review?
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
