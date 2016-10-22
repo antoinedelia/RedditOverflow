@@ -7,14 +7,13 @@ using System.Web.Mvc;
 
 namespace RedditOverflow.Controllers
 {
-    public class SubredditController : Controller
+    public class PostController : Controller
     {
-        // GET: Subreddit
+        // GET: Post
         public ActionResult Index(string id)
         {
-            // Creating the subreddit based on it's name
-            Subreddit subreddit = new Subreddit(id);
-            return View("Index", subreddit);
+            Post post = new Post(id);
+            return View(post);
         }
     }
 }

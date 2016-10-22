@@ -31,5 +31,15 @@ namespace RedditOverflow.Models
         {
 
         }
+
+        public Post(string id)
+        {
+            GetInfosFromPost(id);
+        }
+
+        private void GetInfosFromPost(string id)
+        {
+
+        }
     }
 }

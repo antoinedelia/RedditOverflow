@@ -5,43 +5,42 @@
         <br class="cbt">
         <div id="hlogo">
             <a href="/">
-                <img src="~/Content/img/stackoverflow.png" alt="stack_overflow" style="width:200px; height:40px; margin:20px;">
+                Stack Overflow
             </a>
-
         </div>
         <div id="hmenus">
             <div class="nav mainnavs">
                 <ul>
                     <li class="youarehere">
-                        <a id="nav-questions" href="#" class="js-gps-track" data-gps-track="top_nav.click({is_current:true, location:3, destination:1})">
+                        <a id="nav-questions" href="/questions" class="js-gps-track" data-gps-track="top_nav.click({is_current:true, location:3, destination:1})">
                             Questions
                         </a>
                     </li>
 
                     <li>
-                        <a id="nav-jobs" href="#" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:6})">
+                        <a id="nav-jobs" href="/jobs?med=site-ui&amp;ref=jobs-tab" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:6})">
                             Jobs
                         </a>
                     </li>
                     <li>
-                        <a id="nav-docs" href="#" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:7})">
+                        <a id="nav-docs" href="/documentation" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:7})">
                             Documentation
                         </a>
                     </li>
                     <li>
-                        <a id="nav-tags" href="#" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:2})">
+                        <a id="nav-tags" href="/tags" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:2})">
                             Tags
                         </a>
                     </li>
 
                     <li>
-                        <a id="nav-users" href="#" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:3})">
+                        <a id="nav-users" href="/users" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:3})">
                             Users
                         </a>
                     </li>
 
                     <li>
-                        <a id="nav-badges" href="#" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:4})">
+                        <a id="nav-badges" href="/help/badges" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:4})">
                             Badges
                         </a>
                     </li>
@@ -51,7 +50,7 @@
             <div class="nav askquestion">
                 <ul>
                     <li>
-                        <a id="nav-askquestion" href="#">Ask Question</a>
+                        <a id="nav-askquestion" href="/questions/ask">Ask Question</a>
                     </li>
                 </ul>
             </div>
@@ -65,22 +64,22 @@
                 <h1 id="h-all-questions">All Questions</h1>
 
                 <div id="tabs">
-                    <a class="youarehere" href="#" data-nav-xhref="" title="The most recently asked questions" data-value="newest" data-shortcut="N">
+                    <a href="/questions?sort=newest" data-nav-xhref="" title="The most recently asked questions" data-value="newest" data-shortcut="N">
                         newest
                     </a>
-                    <a href="#" data-nav-xhref="" title="Questions with open bounties" data-value="featured" data-shortcut="E">
-                        <span class="bounty-indicator-tab">382</span>            featured
+                    <a href="/questions?sort=featured" data-nav-xhref="" title="Questions with open bounties" data-value="featured" data-shortcut="E">
+                        <span class="bounty-indicator-tab">379</span>            featured
                     </a>
-                    <a href="#" data-nav-xhref="" title="Questions with the most links" data-value="frequent" data-shortcut="F">
+                    <a href="/questions?sort=frequent" data-nav-xhref="" title="Questions with the most links" data-value="frequent" data-shortcut="F">
                         frequent
                     </a>
-                    <a href="#" data-nav-xhref="" title="Questions with the most votes" data-value="votes" data-shortcut="V">
+                    <a class="youarehere" href="/questions?sort=votes" data-nav-xhref="" title="Questions with the most votes" data-value="votes" data-shortcut="V">
                         votes
                     </a>
-                    <a href="#" data-nav-xhref="" title="Questions that have recent activity" data-value="active" data-shortcut="A">
+                    <a href="/questions?sort=active" data-nav-xhref="" title="Questions that have recent activity" data-value="active" data-shortcut="A">
                         active
                     </a>
-                    <a id="tab-switch" href="#" data-nav-xhref="" title="Switch to unanswered tabs" data-value="" data-shortcut="">
+                    <a id="tab-switch" href="/unanswered" data-nav-xhref="" title="Switch to unanswered tabs" data-value="" data-shortcut="">
                         unanswered
                     </a>
                 </div>
@@ -135,7 +134,8 @@
 
         <div id="sidebar">
             <div class="module" id="questions-count">
-                <div class="summarycount al">12,637,654</div>
+                <div class="summarycount al">@*12,637,654*@</div>
+                <div class="summarycount al">@String.Format("{0:n0}", Model.ListPosts.Sum(item => item.Score*24))</div>
                 <p>questions</p>
             </div>
 
@@ -147,23 +147,23 @@
                     <hr>
                     <div class="spacer">
                         <div class="bulletin-item-type">
-                            <a href="#" class="question-hyperlink">
-                                <div class="favicon favicon-so" title="Meta Stack Exchange"></div>
+                            <a href="http://meta.stackexchange.com/questions/285889/lets-plan-the-second-iteration-of-the-stack-exchange-quality-project?cb=1" class="question-hyperlink">
+                                <div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>
                             </a>
                         </div>
                         <div class="bulletin-item-content">
-                            <a href="#" class="question-hyperlink">Let's Plan The Second Iteration Of The Stack Exchange Quality Project!</a>
+                            <a href="http://meta.stackexchange.com/questions/285889/lets-plan-the-second-iteration-of-the-stack-exchange-quality-project?cb=1" class="question-hyperlink">Let's Plan The Second Iteration Of The Stack Exchange Quality Project!</a>
                         </div>
                         <br class="cbt">
                     </div>
                     <div class="spacer">
                         <div class="bulletin-item-type">
-                            <a href="#" class="question-hyperlink">
-                                <div class="favicon favicon-so" title="Meta Stack Overflow"></div>
+                            <a href="http://meta.stackoverflow.com/questions/336627/documentation-update-october-20th?cb=1" class="question-hyperlink">
+                                <div class="favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
                             </a>
                         </div>
                         <div class="bulletin-item-content">
-                            <a href="#" class="question-hyperlink">Documentation Update, October 20th</a>
+                            <a href="http://meta.stackoverflow.com/questions/336627/documentation-update-october-20th?cb=1" class="question-hyperlink">Documentation Update, October 20th</a>
                         </div>
                         <br class="cbt">
                     </div>
@@ -173,35 +173,33 @@
                     <hr>
                     <div class="spacer">
                         <div class="bulletin-item-type">
-                            <span title="Vote score (upvotes - downvotes)">11</span>
+                            <span title="Vote score (upvotes - downvotes)">4</span>
                         </div>
                         <div class="bulletin-item-content">
-                            <a href="#" class="question-hyperlink">Are there (guiding!) statistics about review “approval” rates?</a>
+                            <a href="http://meta.stackoverflow.com/questions/336579/puzzle-challenge-questions-do-they-belong-on-stackoverflow?cb=1" class="question-hyperlink">Puzzle/challenge questions: do they belong on StackOverflow?</a>
                         </div>
                         <br class="cbt">
                     </div>
                     <div class="spacer">
                         <div class="bulletin-item-type">
-                            <span title="Vote score (upvotes - downvotes)">7</span>
+                            <span title="Vote score (upvotes - downvotes)">31</span>
                         </div>
                         <div class="bulletin-item-content">
-                            <a href="#" class="question-hyperlink">How to add a Microsoft Certification to Developer Story?</a>
+                            <a href="http://meta.stackoverflow.com/questions/336587/its-difficult-to-talk-about-times-in-chat?cb=1" class="question-hyperlink">It's difficult to talk about times in chat</a>
                         </div>
                         <br class="cbt">
                     </div>
                     <div class="spacer">
                         <div class="bulletin-item-type">
-                            <span title="Vote score (upvotes - downvotes)">28</span>
+                            <span title="Vote score (upvotes - downvotes)">17</span>
                         </div>
                         <div class="bulletin-item-content">
-                            <a href="#" class="question-hyperlink">Can we talk about the reviewing culture here on Meta?</a>
+                            <a href="http://meta.stackoverflow.com/questions/336625/how-to-add-swift-answers-to-older-ios-questions?cb=1" class="question-hyperlink">How to add Swift answers to older iOS questions</a>
                         </div>
                         <br class="cbt">
                     </div>
                 </div>
             </div>
-
-
             <div class="module" id="interesting-tags">
 
                 <h4 id="h-interesting-tags">Favorite Tags</h4>
@@ -337,130 +335,154 @@
 
             <div id="hot-network-questions" class="module">
                 <h4>
-                    <a href="#" class="js-gps-track" data-gps-track="posts_hot_network.click({ item_type:1, location:9 })">
+                    <a href="//stackexchange.com/questions?tab=hot" class="js-gps-track" data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
                         Hot Network Questions
                     </a>
                 </h4>
                 <ul>
                     <li>
-                        <div class="favicon favicon-so" title="Worldbuilding Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:579 }); posts_hot_network.click({ item_type:2, location:9 })">
-                            How to explain the existance of just one religion?
+                        <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/354489/word-for-to-direct-attention-away-from" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            Word for "to direct attention away from"
                         </a>
+
                     </li>
                     <li>
-                        <div class="favicon favicon-so" title="Seasoned Advice"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:49 }); posts_hot_network.click({ item_type:2, location:9 })">
-                            UV lamp to disinfect raw sushi fish slices
+                        <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="http://workplace.stackexchange.com/questions/78198/limited-number-of-places-at-award-ceremony-for-team-how-do-i-choose-who-to-tak" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            Limited number of places at award ceremony for team - how do I choose who to take along?
                         </a>
+
                     </li>
                     <li>
-                        <div class="favicon favicon-so" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:200 }); posts_hot_network.click({ item_type:2, location:9 })">
-                            Sieve of Eratosthenes, Step by Step
+                        <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/96641/nest-a-string" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            N(e(s(t))) a string
                         </a>
+
                     </li>
                     <li>
-                        <div class="favicon favicon-so" title="Puzzling Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:559 }); posts_hot_network.click({ item_type:2, location:9 })">
-                            What's the longest concertina word you can find?
+                        <div class="favicon favicon-movies" title="Movies &amp; TV Stack Exchange"></div><a href="http://movies.stackexchange.com/questions/62192/criminals-hackers-trick-computer-system-into-backing-up-all-data-into-single-loc" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:367 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            Criminals/hackers trick computer system into backing up all data into single location
                         </a>
+
                     </li>
                     <li>
-                        <div class="favicon favicon-so" title="Academia Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:415 }); posts_hot_network.click({ item_type:2, location:9 })">
-                            Name spelling on publications
+                        <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="http://tex.stackexchange.com/questions/335304/how-to-add-the-length-of-the-figure" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            How to add the length of the figure?
                         </a>
+
                     </li>
-                    <li>
-                        <div class="favicon favicon-so" title="Academia Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:415 }); posts_hot_network.click({ item_type:2, location:9 })">
-                            What are the legal and ethical implications of "padding" pay with extra hours to compensate for unpaid work?
+                    <li class="dno js-hidden" style="display: list-item;">
+                        <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/78584/thesis-reviewer-requests-update-to-literature-review-to-incorporate-last-four-ye" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            Thesis reviewer requests update to literature review to incorporate last four years of research. Do I need to do this?
                         </a>
+
                     </li>
-                    <li>
-                        <div class="favicon favicon-so" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:200 }); posts_hot_network.click({ item_type:2, location:9 })">
-                            Compute the Eulerian number
+                    <li class="dno js-hidden" style="display: list-item;">
+                        <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="http://puzzling.stackexchange.com/questions/44702/longest-de-bruijn-phrase" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            Longest "De Bruijn phrase"
                         </a>
+
                     </li>
-                    <li>
-                        <div class="favicon favicon-so" title="Skeptics Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:212 }); posts_hot_network.click({ item_type:2, location:9 })">
+                    <li class="dno js-hidden" style="display: list-item;">
+                        <div class="favicon favicon-superuser" title="Super User"></div><a href="http://superuser.com/questions/1136864/usb-in-computer-screen-not-working" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:3 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            USB in computer screen not working
+                        </a>
+
+                    </li>
+                    <li class="dno js-hidden" style="display: list-item;">
+                        <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/354625/what-is-the-correct-plural-of-training" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            What is the correct plural of "training"?
+                        </a>
+
+                    </li>
+                    <li class="dno js-hidden" style="display: list-item;">
+                        <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/140437/why-dont-vpn-services-use-tls" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            Why don't VPN services use TLS?
+                        </a>
+
+                    </li>
+                    <li class="dno js-hidden" style="display: list-item;">
+                        <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/89365/how-do-i-depower-overpowered-magic-items-without-breaking-immersion" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            How do I depower overpowered magic items without breaking immersion?
+                        </a>
+
+                    </li>
+                    <li class="dno js-hidden" style="display: list-item;">
+                        <div class="favicon favicon-mathoverflow" title="MathOverflow"></div><a href="http://mathoverflow.net/questions/252671/surprising-examples-of-markov-chains" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:504 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            "Surprising" examples of Markov chains
+                        </a>
+
+                    </li>
+                    <li class="dno js-hidden" style="display: list-item;">
+                        <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/143547/did-dumbledore-steal-presents-and-mail-from-harry" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            Did Dumbledore steal presents and mail from Harry?
+                        </a>
+
+                    </li>
+                    <li class="dno js-hidden" style="display: list-item;">
+                        <div class="favicon favicon-philosophy" title="Philosophy Stack Exchange"></div><a href="http://philosophy.stackexchange.com/questions/38542/what-is-the-difference-if-any-between-not-true-and-false" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:265 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            What is the difference (if any) between "not true" and "false"?
+                        </a>
+
+                    </li>
+                    <li class="dno js-hidden" style="display: list-item;">
+                        <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/97049/print-the-greek-alphabet" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            Print the Greek alphabet!
+                        </a>
+
+                    </li>
+                    <li class="dno js-hidden" style="display: list-item;">
+                        <div class="favicon favicon-diy" title="Home Improvement Stack Exchange"></div><a href="http://diy.stackexchange.com/questions/101380/mysterious-cord-running-from-wall-safe" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:73 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            Mysterious cord running from wall. Safe?
+                        </a>
+
+                    </li>
+                    <li class="dno js-hidden" style="display: list-item;">
+                        <div class="favicon favicon-skeptics" title="Skeptics Stack Exchange"></div><a href="http://skeptics.stackexchange.com/questions/35554/is-the-four-minute-nuclear-weapon-response-time-classified-information" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:212 }); posts_hot_network.click({ item_type:2, location:11 })">
                             Is the four minute nuclear weapon response time classified information?
                         </a>
-                    </li>
-                    <li>
-                        <div class="favicon favicon-so" title="Electrical Engineering Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:135 }); posts_hot_network.click({ item_type:2, location:9 })">
-                            What's the difference between coax cable and regular electric wire?
-                        </a>
-                    </li>
-                    <li>
-                        <div class="favicon favicon-so" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:200 }); posts_hot_network.click({ item_type:2, location:9 })">
-                            Codegolf the permanent
-                        </a>
-                    </li>
-                    <li>
-                        <div class="favicon favicon-so" title="Puzzling Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:559 }); posts_hot_network.click({ item_type:2, location:9 })">
-                            Unique representation of combination without sorting
-                        </a>
-                    </li>
-                    <li>
-                        <div class="favicon favicon-so" title="Chemistry Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:431 }); posts_hot_network.click({ item_type:2, location:9 })">
-                            If you put two blocks of an element together, why don't they bond?
-                        </a>
+
                     </li>
                     <li class="dno js-hidden" style="display: list-item;">
-                        <div class="favicon favicon-so" title="Stack Overflow"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:1 }); posts_hot_network.click({ item_type:2, location:9 })">
-                            Why doesn't the compiler report a missing semicolon?
+                        <div class="favicon favicon-askubuntu" title="Ask Ubuntu"></div><a href="http://askubuntu.com/questions/837558/where-are-sudos-insults-stored" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:89 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            Where are sudo's insults stored?
                         </a>
+
                     </li>
                     <li class="dno js-hidden" style="display: list-item;">
-                        <div class="favicon favicon-so" title="Puzzling Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:559 }); posts_hot_network.click({ item_type:2, location:9 })">
-                            Hexagonal minesweeper
+                        <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="http://workplace.stackexchange.com/questions/77952/previous-company-name-is-isis-how-to-list-on-cv" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            Previous company name is ISIS, how to list on CV?
                         </a>
+
                     </li>
                     <li class="dno js-hidden" style="display: list-item;">
-                        <div class="favicon favicon-so" title="Mathematics Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:69 }); posts_hot_network.click({ item_type:2, location:9 })">
-                            When to stop rolling a die in a game where 6 loses everything
+                        <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="http://tex.stackexchange.com/questions/335249/how-to-avoid-intersection-of-elements-in-tikz" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            How to avoid intersection of elements in tikz
                         </a>
+
                     </li>
                     <li class="dno js-hidden" style="display: list-item;">
-                        <div class="favicon favicon-so" title="Travel Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:273 }); posts_hot_network.click({ item_type:2, location:9 })">
-                            What are the legal consequences for a tourist who runs out of gas on the Autobahn?
+                        <div class="favicon favicon-codereview" title="Code Review Stack Exchange"></div><a href="http://codereview.stackexchange.com/questions/144939/check-if-a-string-is-a-permutation-of-a-palindrome" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:196 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            Check if a string is a permutation of a palindrome
                         </a>
+
                     </li>
                     <li class="dno js-hidden" style="display: list-item;">
-                        <div class="favicon favicon-so" title="Academia Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:415 }); posts_hot_network.click({ item_type:2, location:9 })">
-                            Publishing a mathematical research article on research which is already done?
+                        <div class="favicon favicon-history" title="History Stack Exchange"></div><a href="http://history.stackexchange.com/questions/33396/was-roosevelt-the-biggest-slave-trader-in-recorded-history" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:324 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            Was Roosevelt the "biggest slave trader in recorded history"?
                         </a>
+
                     </li>
                     <li class="dno js-hidden" style="display: list-item;">
-                        <div class="favicon favicon-so" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:186 }); posts_hot_network.click({ item_type:2, location:9 })">
-                            Old science fiction film: father and son on space mission
+                        <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/96973/shuffle-up-and-deal" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            Shuffle Up and Deal!
                         </a>
+
                     </li>
                     <li class="dno js-hidden" style="display: list-item;">
-                        <div class="favicon favicon-so" title="TeX - LaTeX Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:85 }); posts_hot_network.click({ item_type:2, location:9 })">
-                            Detecting harmful LaTeX code
+                        <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/40188610/how-to-change-the-color-of-drawable-shape-in-the-layout-file" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                            How to change the color of drawable shape in the layout file
                         </a>
-                    </li>
-                    <li class="dno js-hidden" style="display: list-item;">
-                        <div class="favicon favicon-so" title="Monero Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:656 }); posts_hot_network.click({ item_type:2, location:9 })">
-                            What is actually happening when you pool mine? What is a share?
-                        </a>
-                    </li>
-                    <li class="dno js-hidden" style="display: list-item;">
-                        <div class="favicon favicon-so" title="Unix &amp; Linux Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:106 }); posts_hot_network.click({ item_type:2, location:9 })">
-                            Get complete last row of `df` output
-                        </a>
-                    </li>
-                    <li class="dno js-hidden" style="display: list-item;">
-                        <div class="favicon favicon-so" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:200 }); posts_hot_network.click({ item_type:2, location:9 })">
-                            Take a ride on the Reading, If you pass Go, collect $200
-                        </a>
-                    </li>
-                    <li class="dno js-hidden" style="display: list-item;">
-                        <div class="favicon favicon-so" title="Movies &amp; TV Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:367 }); posts_hot_network.click({ item_type:2, location:9 })">
-                            '90s kids movie about a game robot attacking people
-                        </a>
-                    </li>
-                    <li class="dno js-hidden" style="display: list-item;">
-                        <div class="favicon favicon-so" title="Programmers Stack Exchange"></div><a href="#" class="js-gps-track" data-gps-track="site.switch({ item_type:9, target_site:131 }); posts_hot_network.click({ item_type:2, location:9 })">
-                            How to find positive things in a code review?
-                        </a>
+
                     </li>
                 </ul>
             </div>

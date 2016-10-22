@@ -26,7 +26,6 @@ namespace RedditOverflow
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Subreddit", action = "Index", id = UrlParameter.Optional }
             );
-
         }
     }
 }

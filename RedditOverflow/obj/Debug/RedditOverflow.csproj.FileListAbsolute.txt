@@ -51,3 +51,6 @@ c:\users\antoine\documents\visual studio 2015\Projects\RedditOverflow\RedditOver
 c:\users\antoine\documents\visual studio 2015\Projects\RedditOverflow\RedditOverflow\obj\Debug\RedditOverflow.csprojResolveAssemblyReference.cache
 c:\users\antoine\documents\visual studio 2015\Projects\RedditOverflow\RedditOverflow\obj\Debug\RedditOverflow.dll
 c:\users\antoine\documents\visual studio 2015\Projects\RedditOverflow\RedditOverflow\obj\Debug\RedditOverflow.pdb
+C:\Users\Antoine\documents\visual studio 2015\Projects\RedditOverflow\RedditOverflow\bin\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Antoine\documents\visual studio 2015\Projects\RedditOverflow\RedditOverflow\bin\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\Users\Antoine\documents\visual studio 2015\Projects\RedditOverflow\RedditOverflow\bin\fr\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
