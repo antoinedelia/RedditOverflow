@@ -106,7 +106,7 @@
                         </div>
                     </div>
                     <div class="summary">
-                        <h3><a href="#" class="question-hyperlink">@post.Title</a></h3>
+                        <h3>@Html.ActionLink(post.Title, "Index", new { controller = "Post", id = post.Url }, new { @class = "question-hyperlink" })</h3>
                         <div class="excerpt">
                             @post.Content.Substring(0, post.Content.Length > 200 ? 200 : post.Content.Length)
                         </div>
@@ -119,7 +119,6 @@
                                     asked <span class="relativetime">@post.Date</span>
                                 </div>
                                 <div class="user-gravatar32">
-                                    @*<a href="#"><div class="gravatar-wrapper-32"><img src="http://lorempixel.com/400/400/people/1" alt="" width="32" height="32"></div></a>*@
                                     <a href="#"><div class="gravatar-wrapper-32"><img src="@(post.Thumbnail)" alt="" width="32" height="32"></div></a>
                                 </div>
                                 <div class="user-details">
@@ -134,7 +133,6 @@
 
         <div id="sidebar">
             <div class="module" id="questions-count">
-                <div class="summarycount al">@*12,637,654*@</div>
                 <div class="summarycount al">@String.Format("{0:n0}", Model.ListPosts.Sum(item => item.Score*24))</div>
                 <p>questions</p>
             </div>

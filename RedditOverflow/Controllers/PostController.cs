@@ -13,7 +13,7 @@ namespace RedditOverflow.Controllers
         public ActionResult Index(string id)
         {
             Post post = new Post(id);
-            return View(post);
+            return View("Index", post);
         }
     }
 }

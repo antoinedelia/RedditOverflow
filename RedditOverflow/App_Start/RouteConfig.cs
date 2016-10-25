@@ -20,6 +20,11 @@ namespace RedditOverflow
                 "Subreddit/{id}",
                 new { controller = "Subreddit", action = "Index" }
             );
+            routes.MapRoute(
+                "Post search",
+                "Post/{*id}",
+                new { controller = "Post", action = "Index" }
+            );
 
             routes.MapRoute(
                 name: "Default",
