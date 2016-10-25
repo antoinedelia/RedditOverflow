@@ -46,7 +46,7 @@ namespace RedditOverflow.Models
         private void GetInfosFromPost(string id)
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("https://www.reddit.com/" + id + ".json");
+            client.BaseAddress = new Uri("https://www.reddit.com/" + id + ".json?sort=top");
             // Add an Accept header for JSON format.
             client.DefaultRequestHeaders.Accept.Add(
             new MediaTypeWithQualityHeaderValue("application/json"));
@@ -74,7 +74,7 @@ namespace RedditOverflow.Models
                     Thumbnail = postInfo[0]["data"]["children"][0]["data"]["thumbnail"].ToString();
                     NumberComments = Int32.Parse(postInfo[0]["data"]["children"][0]["data"]["num_comments"].ToString());
 
-                    var numberFirstComments = Int32.Parse(postInfo[1]["data"]["children"].ToList().Count.ToString());
+                    var numberFirstComments = postInfo[1]["data"]["children"].ToList().Count;
                     ListComments = new List<Comment>();
                     for (int i = 0; i < numberFirstComments-1; i++)
                     {
@@ -85,7 +85,20 @@ namespace RedditOverflow.Models
                         dtDateTime = dtDateTime.AddSeconds((int)postInfo[1]["data"]["children"][i]["data"]["created_utc"]).ToLocalTime();
                         comment.Date = dtDateTime;
                         comment.Score = (int)postInfo[1]["data"]["children"][i]["data"]["score"];
-
+                        comment.ListComments = new List<Comment>();
+                        var numberChildComments = postInfo[1]["data"]["children"][i]["data"]["replies"].ToList().Count;
+                        for (int j = 0; j < numberChildComments-1; j++)
+                        {
+                            Comment childComment = new Comment();
+                            childComment.Author = (string)postInfo[1]["data"]["children"][i]["data"]["replies"]["data"]["children"][j]["data"]["author"];
+                            childComment.Content = (string)postInfo[1]["data"]["children"][i]["data"]["replies"]["data"]["children"][j]["data"]["body"];
+                            DateTime dtcDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+                            var time = (int?)postInfo[1]["data"]["children"][i]["data"]["replies"]["data"]["children"][j]["data"]["created_utc"] ?? 0;
+                            dtcDateTime = dtcDateTime.AddSeconds(time).ToLocalTime();
+                            childComment.Date = dtcDateTime;
+                            childComment.Score = (int?)postInfo[1]["data"]["children"][i]["data"]["replies"]["data"]["children"][j]["data"]["score"] ?? 0;
+                            comment.ListComments.Add(childComment);
+                        }
                         ListComments.Add(comment);
                     }
                 }
