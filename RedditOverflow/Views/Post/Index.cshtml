@@ -83,7 +83,7 @@
                                             <a href="@Model.Link">Link attached</a> <br />
                                             <a href="@("https://www.reddit.com" + Model.Url)">Link to original post</a> <br />
                                             <br />
-                                            @Model.Content
+                                            @Html.Raw(Model.Content)
                                         </div>
                                         <div class="post-taglist">
                                             @Html.ActionLink(Model.Subreddit, "Index", new { controller = "Subreddit", id = Model.Subreddit }, new { @class = "post-tag" })
@@ -162,7 +162,7 @@
                                             </td>
                                             <td class="answercell">
                                                 <div class="post-text" itemprop="text">
-                                                    @comment.Content
+                                                    @Html.Raw(comment.Content)
                                                 </div>
                                                 <table class="fw">
                                                     <tbody>
@@ -225,7 +225,7 @@
                                                                         </td>
                                                                         <td class="comment-text">
                                                                             <div style="display: block;" class="comment-body">
-                                                                                <span class="comment-copy">@childComment.Content</span>
+                                                                                <span class="comment-copy">@Html.Raw(childComment.Content)</span>
                                                                                 –&nbsp;<a href="#" class="comment-user">@childComment.Author</a>
                                                                                 <span class="comment-date" dir="ltr"><a class="comment-link" href="#"><span class="relativetime-clean">@childComment.Date</span></a></span>
                                                                             </div>

@@ -54,3 +54,6 @@ c:\users\antoine\documents\visual studio 2015\Projects\RedditOverflow\RedditOver
 C:\Users\Antoine\documents\visual studio 2015\Projects\RedditOverflow\RedditOverflow\bin\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
 C:\Users\Antoine\documents\visual studio 2015\Projects\RedditOverflow\RedditOverflow\bin\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
 C:\Users\Antoine\documents\visual studio 2015\Projects\RedditOverflow\RedditOverflow\bin\fr\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+C:\Users\Antoine\documents\visual studio 2015\Projects\RedditOverflow\RedditOverflow\bin\MarkdownSharp.dll
+C:\Users\Antoine\documents\visual studio 2015\Projects\RedditOverflow\RedditOverflow\bin\MarkdownSharp.pdb
+C:\Users\Antoine\documents\visual studio 2015\Projects\RedditOverflow\RedditOverflow\bin\MarkdownSharp.xml

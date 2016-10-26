@@ -58,11 +58,12 @@ namespace RedditOverflow.Models
                 HttpResponseMessage response = client.GetAsync(urlParameters).Result;  // Blocking call!
                 if (response.IsSuccessStatusCode)
                 {
+                    var md = new MarkdownSharp.Markdown();
                     // Getting the JSON from Reddit
                     var dataObjects = response.Content.ReadAsStringAsync().Result;
                     var postInfo = JArray.Parse(dataObjects);
                     Title = postInfo[0]["data"]["children"][0]["data"]["title"].ToString();
-                    Content = postInfo[0]["data"]["children"][0]["data"]["selftext"].ToString();
+                    Content = md.Transform(postInfo[0]["data"]["children"][0]["data"]["selftext"].ToString());
                     Author = postInfo[0]["data"]["children"][0]["data"]["author"].ToString();
                     Subreddit = postInfo[0]["data"]["children"][0]["data"]["subreddit"].ToString();
                     DateTime dtpDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
@@ -80,7 +81,7 @@ namespace RedditOverflow.Models
                     {
                         Comment comment = new Comment();
                         comment.Author = (string)postInfo[1]["data"]["children"][i]["data"]["author"];
-                        comment.Content = (string)postInfo[1]["data"]["children"][i]["data"]["body"];
+                        comment.Content = md.Transform((string)postInfo[1]["data"]["children"][i]["data"]["body"]);
                         DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
                         dtDateTime = dtDateTime.AddSeconds((int)postInfo[1]["data"]["children"][i]["data"]["created_utc"]).ToLocalTime();
                         comment.Date = dtDateTime;
@@ -91,7 +92,7 @@ namespace RedditOverflow.Models
                         {
                             Comment childComment = new Comment();
                             childComment.Author = (string)postInfo[1]["data"]["children"][i]["data"]["replies"]["data"]["children"][j]["data"]["author"];
-                            childComment.Content = (string)postInfo[1]["data"]["children"][i]["data"]["replies"]["data"]["children"][j]["data"]["body"];
+                            childComment.Content = md.Transform((string)postInfo[1]["data"]["children"][i]["data"]["replies"]["data"]["children"][j]["data"]["body"]);
                             DateTime dtcDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
                             var time = (int?)postInfo[1]["data"]["children"][i]["data"]["replies"]["data"]["children"][j]["data"]["created_utc"] ?? 0;
                             dtcDateTime = dtcDateTime.AddSeconds(time).ToLocalTime();
