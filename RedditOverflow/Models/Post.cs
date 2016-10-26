@@ -87,8 +87,8 @@ namespace RedditOverflow.Models
                         comment.Date = dtDateTime;
                         comment.Score = (int)postInfo[1]["data"]["children"][i]["data"]["score"];
                         comment.ListComments = new List<Comment>();
-                        var numberChildComments = postInfo[1]["data"]["children"][i]["data"]["replies"].ToList().Count;
-                        for (int j = 0; j < numberChildComments-1; j++)
+                        var numberChildComments = postInfo[1]["data"]["children"][i]["data"]["replies"].Count() != 0 ? postInfo[1]["data"]["children"][i]["data"]["replies"]["data"]["children"].ToList().Count : 0;
+                        for (int j = 0; j < numberChildComments; j++)
                         {
                             Comment childComment = new Comment();
                             childComment.Author = (string)postInfo[1]["data"]["children"][i]["data"]["replies"]["data"]["children"][j]["data"]["author"];
@@ -98,7 +98,7 @@ namespace RedditOverflow.Models
                             dtcDateTime = dtcDateTime.AddSeconds(time).ToLocalTime();
                             childComment.Date = dtcDateTime;
                             childComment.Score = (int?)postInfo[1]["data"]["children"][i]["data"]["replies"]["data"]["children"][j]["data"]["score"] ?? 0;
-                            comment.ListComments.Add(childComment);
+                            if(childComment.Content != "") comment.ListComments.Add(childComment);
                         }
                         ListComments.Add(comment);
                     }
